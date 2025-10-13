@@ -1,0 +1,41 @@
+.selected-grid {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+
+.selected-grid h2 {
+  margin-top: 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.selected-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  margin: 4px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: grab;
+}
+
+.grid-item:active {
+  cursor: grabbing;
+}
+
+.buttons button {
+  margin-left: 4px;
+  padding: 2px 6px;
+}
