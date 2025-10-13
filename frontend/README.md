@@ -44,3 +44,10 @@ Il browser:
 - Paginazione o infinite scroll sugli esami
 - Ordinamento e filtri avanzati nella griglia
 - Validazioni più robuste sugli esami
+
+In localStorage:
+
+```
+selectedExams
+[{"id":3,"descrizione":"Eco Addome","ambulatorio_id":2,"codice_ministeriale":"EC001","codice_interno":"INT003","parte_corpo_id":3}]
+```
