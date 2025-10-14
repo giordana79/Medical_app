@@ -1,24 +1,27 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 class AmbulatorioSchema(BaseModel):
     id: int
     nome: str
+
     class Config:
         orm_mode = True
 
 class ParteCorpoSchema(BaseModel):
     id: int
     nome: str
+
     class Config:
         orm_mode = True
 
 class EsameSchema(BaseModel):
     id: int
-    codice_ministeriale: str
-    codice_interno: str
-    descrizione: str
+    codice_ministeriale: Optional[str] = None
+    codice_interno: Optional[str] = None
+    descrizione: Optional[str] = None
     parte_corpo: ParteCorpoSchema
-    ambulatori: List[AmbulatorioSchema]
+    ambulatorio: AmbulatorioSchema
+
     class Config:
         orm_mode = True

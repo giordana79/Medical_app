@@ -17,9 +17,9 @@ class ParteCorpo(Base):
 class Esame(Base):
     __tablename__ = "esami"
     id = Column(Integer, primary_key=True, index=True)
-    codice_ministeriale = Column(String(10))
-    codice_interno = Column(String(10))
-    descrizione = Column(String(100))
+    codice_ministeriale = Column(String(50))
+    codice_interno = Column(String(50))
+    descrizione = Column(String(200))
     parte_corpo_id = Column(Integer, ForeignKey("parti_corpo.id"))
     ambulatorio_id = Column(Integer, ForeignKey("ambulatori.id"))
 

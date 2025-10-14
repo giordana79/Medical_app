@@ -3,3 +3,7 @@ uvicorn
 sqlalchemy
 pydantic
 databases
+
+
+#python-multipart    # se in futuro  si usa upload file/form
+#alembic             # per migrazioni DB
