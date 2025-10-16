@@ -25,31 +25,46 @@ export default function App() {
     setNotification({ message, type });
   };
 
+  // Carica ambulatori all'avvio
   useEffect(() => {
     getAmbulatori().then((res) => {
       setAmbulatori(res.data);
-      if (res.data.length > 0) setSelectedAmb(res.data[0].id);
+      if (res.data.length > 0 && !selectedAmb) setSelectedAmb(res.data[0].id);
     });
   }, []);
 
+  // Carica parti del corpo in base all'ambulatorio selezionato
   useEffect(() => {
     if (!selectedAmb) return;
     getPartiCorpo(selectedAmb, searchIds).then((res) => {
       setParti(res.data);
-      if (res.data.length > 0) setSelectedParte(res.data[0].id);
+      if (res.data.length > 0 && !selectedParte)
+        setSelectedParte(res.data[0].id);
     });
   }, [selectedAmb, searchIds]);
 
+  // Carica esami in base a ambulatorio, parte del corpo e searchIds
   useEffect(() => {
-    if (!selectedAmb || !selectedParte) return;
+    if (!searchIds && (!selectedAmb || !selectedParte)) return;
     getEsami(selectedAmb, selectedParte, searchIds).then((res) =>
       setEsami(res.data)
     );
   }, [selectedAmb, selectedParte, searchIds]);
 
+  // Gestione ricerca
   const handleSearch = (campo, text) => {
     if (!text) return;
     searchEsami(campo, text).then((res) => {
+      if (res.data.length === 0) {
+        setSearchIds(null);
+        showNotification("Nessun esame trovato", "info");
+        return;
+      }
+
+      // Aggiorna ambulatorio e parte del corpo in base al primo risultato
+      setSelectedAmb(res.data[0].ambulatorio.id);
+      setSelectedParte(res.data[0].parte_corpo.id);
+
       const ids = res.data.map((e) => e.id).join(",");
       setSearchIds(ids);
     });

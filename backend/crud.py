@@ -48,9 +48,9 @@ def search_esami(db: Session, campo: str, text: str):
     elif campo == "all":
         q = q.filter(
             or_(
-                Esame.descrizione.ilike(pattern),
-                Esame.codice_ministeriale.ilike(pattern),
-                Esame.codice_interno.ilike(pattern),
+               Esame.descrizione.like(pattern),
+               Esame.codice_ministeriale.like(pattern),
+               Esame.codice_interno.like(pattern),
             )
         )
     else:
