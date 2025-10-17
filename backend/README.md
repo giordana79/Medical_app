@@ -102,3 +102,15 @@ Nel frontend si può aprire DevTools → Network tab e filtrare per “esami” 
 ```
 http://127.0.0.1:8000/parti_corpo/1?search_ids=1,2
 ```
+
+Per accedere al db SQLite:
+
+da terminale entrare nella cartella dove c'è il file database.db ed avviare SQLite con
+il comando:
+
+- sqlite3 database.db
+- .tables
+- .schema esami #mostra strutura tabella
+- SELECT \* FROM ambulatori;
+- SELECT \* FROM esami WHERE codice_ministeriale='EC001';
+  .exit
